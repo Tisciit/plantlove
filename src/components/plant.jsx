@@ -1,19 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
+import style from './plant.module.css'
+import image from '../plant.svg'
 
-class Plant extends Component {
-    state = {}
-    render() {
-        return (
-            <div className="card">
-                <div className="badge badge-secondary">I am a plant</div>
-                <div className="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" className="btn btn-secondary btn-sm">Left</button>
-                    <button type="button" className="btn btn-secondary btn-sm">Middle</button>
-                    <button type="button" className="btn btn-secondary btn-sm">Right</button>
-                </div>
+const Plant = ({ name, description }) => {
+
+    return (
+        <div className={style.div}>
+            <img className={style.imgCircle} src={image} alt="Plants here :("></img>
+            <h3 className={style.plantName}>{name}</h3>
+            <p className={style.description}>{description}</p>
+            <div className={style.controls}>
+                <button>Wasser</button>
+                <button>Dünger</button>
+                <button>Umpflanzen</button>
+                <button>KP</button>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 export default Plant;

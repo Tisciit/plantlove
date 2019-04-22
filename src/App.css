@@ -2,3 +2,18 @@
     padding-left: 10px;
     padding-right: 10px;
 }
+
+.button-row {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button-round-add {
+    border: none;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background: lightcoral;
+    vertical-align: center;
+}

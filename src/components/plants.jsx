@@ -22,8 +22,9 @@ const Plants = () => {
             {plants.map((p, index) => {
                 return <Plant key={index} name={p.name} description={p.description} />
             })}
-
-            <button onClick={addPlant}></button>
+            <div className="button-row">
+                <button className="button-round-add" onClick={addPlant}>Add</button>
+            </div>
         </div>
     )
 }

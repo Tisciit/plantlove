@@ -4,6 +4,8 @@ import image from '../plant.svg'
 
 const Plant = ({ name, description }) => {
 
+    //const [nextW, setNextW] = useState(0);
+
     return (
         <div className={style.div}>
             <img className={style.imgCircle} src={image} alt="Plants here :("></img>

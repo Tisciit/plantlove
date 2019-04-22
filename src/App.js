@@ -1,14 +1,16 @@
 import React from 'react';
 import './App.css';
-import Plant from "./components/plant"
+import Plants from './components/plants'
 
 const App = () => {
 
   return (
     <div className="App">
-      <Plant name="Efeutute" description="Schrank Wohnzimmer"/>
+      {/* <Plant name="Efeutute" description="Schrank Wohnzimmer"/>
       <Plant name="Hängi" description="Über Fernseher links"/>
-      <Plant name="Hängi" description="Über Fernseher rechts"/>
+      <Plant name="Hängi" description="Über Fernseher rechts"/> */}
+
+      <Plants />
     </div>
   );
 }

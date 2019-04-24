@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Plants from './components/plants'
 
 const App = () => {
-
+  
   return (
     <div className="App">
       {/* <Plant name="Efeutute" description="Schrank Wohnzimmer"/>

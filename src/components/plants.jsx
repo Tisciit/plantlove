@@ -5,15 +5,12 @@ const Plants = () => {
 
     const [plants, setPlants] = useState([])
 
-    const addPlant = () => {
+    const addPlant = (name, description) => {
         const _plants = [...plants];
-        _plants.push(
-            {
-                name: "hallo",
-                description: "test"
-            }
-        );
-
+        _plants.push({
+            name: name,
+            description: description,
+        });
         setPlants(_plants);
     }
 

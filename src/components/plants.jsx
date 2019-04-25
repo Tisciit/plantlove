@@ -5,7 +5,7 @@ const Plants = () => {
 
     const [plants, setPlants] = useState([])
 
-    const addPlant = (name, description) => {
+    const addPlant = (name = "no name", description = "no desc") => {
         const _plants = [...plants];
         _plants.push({
             name: name,
@@ -14,13 +14,17 @@ const Plants = () => {
         setPlants(_plants);
     }
 
+    const showAddPlant = () => {
+        addPlant("","");
+    }
+
     return (
         <div>
             {plants.map((p, index) => {
                 return <Plant key={index} name={p.name} description={p.description} />
             })}
             <div className="button-row">
-                <button className="button-round-add" onClick={addPlant}>Add</button>
+                <button className="button-round-add" onClick={showAddPlant}>Add</button>
             </div>
         </div>
     )

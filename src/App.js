@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import Plants from './components/plants'
+import SVGAnimation from './components/svgAnimation'
 
 const App = () => {
   
@@ -9,8 +10,8 @@ const App = () => {
       {/* <Plant name="Efeutute" description="Schrank Wohnzimmer"/>
       <Plant name="Hängi" description="Über Fernseher links"/>
       <Plant name="Hängi" description="Über Fernseher rechts"/> */}
-
-      <Plants />
+      <SVGAnimation />
+     {/* <Plants /> */}
     </div>
   );
 }

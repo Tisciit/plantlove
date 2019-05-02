@@ -2,11 +2,13 @@ import React, {useState} from 'react';
 import './App.css';
 import Plants from './components/plants'
 import SVGAnimation from './components/svgAnimation'
+import Navbar from './components/navbar';
 
 const App = () => {
   
   return (
     <div className="App">
+    <Navbar />
       {/* <SVGAnimation><svg width="374" height="126" viewBox="0 0 374 126" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <mask id="path-1-outside-1" maskUnits="userSpaceOnUse" x="3.875" y="0.5" width="366" height="118" fill="black">

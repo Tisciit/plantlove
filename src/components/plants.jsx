@@ -5,7 +5,7 @@ const Plants = () => {
 
     const [plants, setPlants] = useState(localStorage.getItem('plants') ? JSON.parse(localStorage.getItem('plants')) : [{
         name: "my first plant",
-        description: "u gay",
+        description: "some very well describing text",
     }])
 
     const addPlant = (name = "no name", description = "no desc") => {

@@ -3,7 +3,10 @@ import Plant from './plant'
 
 const Plants = () => {
 
-    const [plants, setPlants] = useState([])
+    const [plants, setPlants] = useState(localStorage.getItem('plants') ? JSON.parse(localStorage.getItem('plants')) : [{
+        name: "my first plant",
+        description: "u gay",
+    }])
 
     const addPlant = (name = "no name", description = "no desc") => {
         const _plants = [...plants];
@@ -18,6 +21,10 @@ const Plants = () => {
         addPlant("","");
     }
 
+    const saveToLocalStorage = () => {
+        localStorage.setItem('plants', JSON.stringify(plants));
+    }
+
     return (
         <div>
             {plants.map((p, index) => {
@@ -25,6 +32,7 @@ const Plants = () => {
             })}
             <div className="button-row">
                 <button className="button-round-add" onClick={showAddPlant}>Add</button>
+                <button className="button-round-save" onClick = {saveToLocalStorage}>Save</button>
             </div>
         </div>
     )

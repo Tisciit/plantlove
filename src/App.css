@@ -18,3 +18,7 @@
     background: lightcoral;
     vertical-align: center;
 }
+
+SVGAnimation {
+    display: none;
+}

@@ -1,0 +1,88 @@
+.nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: rgb(221, 221, 221);
+    width: 100%;
+    min-height: 10vh;
+    background: purple;
+}
+
+.navLogo {
+    letter-spacing: 10px;
+    font-size: 2em;
+}
+
+.navLinks {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 60%;
+    font-size: 1.5em;
+}
+
+.navLinks a {
+    color: white;
+    text-decoration: none;
+}
+
+.navLinks a:visited {
+    color: white;
+}
+
+/* Mobile style */
+@media only screen and (max-width: 460px) {
+
+    .navLinks {
+        position: absolute;
+        flex-direction: column;
+        top: 10vh;
+        right: -50%;
+        z-index: 10;
+        width: 50%;
+        height: 90vh;
+
+        background: rebeccapurple;
+        opacity: 0;
+        pointer-events: none;
+
+        transition: all .2s ease-in-out
+    }
+
+    .navLinksSlide {
+        right: 0;
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .navBurger {
+        width: 40px;
+    }
+
+    .navBurger .navBurgerTop,
+    .navBurger .navBurgerMiddle,
+    .navBurger .navBurgerBottom {
+        background-color: black;
+        border-radius: 3px;
+        display: block;
+        height: 5px;
+        margin: 7px 0;
+        transition: all .2s ease-in-out;
+    }
+
+    .navBurgerTopRotated {
+        transform: translateY(12px) rotate(135deg);
+    }
+
+    .navBurgerBottomRotated {
+        transform: translateY(-12px) rotate(-135deg);
+    }
+
+    .navBurgerMiddleHidden {
+        transform: scale(0);
+    }
+}
+
+@media screen and (min-width: 460px) {}

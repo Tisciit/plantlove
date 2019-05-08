@@ -1,6 +1,4 @@
 .App {
-    padding-left: 10px;
-    padding-right: 10px;
 }
 
 .button-row {
@@ -16,8 +14,4 @@
     width: 50px;
     background: lightcoral;
     vertical-align: center;
-}
-
-SVGAnimation {
-    display: none;
 }

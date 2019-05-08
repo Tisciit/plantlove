@@ -4,8 +4,9 @@
     align-items: center;
     color: rgb(221, 221, 221);
     width: 100%;
-    min-height: 10vh;
-    background: purple;
+    height: 10vh;
+    /* background: purple; */
+    margin-bottom: 1vh;
 }
 
 .navLogo {
@@ -43,6 +44,8 @@
         z-index: 10;
         width: 50%;
         height: 90vh;
+        margin: 0;
+        padding: 0;
 
         background: rebeccapurple;
         opacity: 0;

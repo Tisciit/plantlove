@@ -25,6 +25,14 @@ const Plants = () => {
         localStorage.setItem('plants', JSON.stringify(plants));
     }
 
+    const deletePlant = (key) => {
+        const _plants = [...plants];
+        
+        //löschen logik ya
+
+        setPlants(_plants);
+    } 
+
     return (
         <div>
             {plants.map((p, index) => {

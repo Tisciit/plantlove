@@ -5,6 +5,8 @@ const AddPlant = () => {
 
 
     const [waterInterval, setWaterInterval] = useState(0);
+    const [dustInterval, setDustInterval] = useState(0);
+    const [fertilizerInterval, setFertilizerInterval] = useState(0);
 
     const getClassName = () => {
         return "addplant " + Style.grid;
@@ -29,15 +31,27 @@ const AddPlant = () => {
 
         if (botanica) {
             setWaterInterval(botanica.c1);
+            setDustInterval(botanica.c2);
+            setFertilizerInterval(botanica.c3);
         }
     }
 
     const updateWaterInterval = (e) => {
         setWaterInterval(e.target.value);
     }
+    const updateDustInterval = (e) => {
+        setDustInterval(e.target.value);
+    }
+    const updateFertilizerInterval = (e) => {
+        setFertilizerInterval(e.target.value);
+    }
+
+
 
     const doTheLog = () => {
         console.log(waterInterval);
+        console.log(dustInterval);
+        console.log(fertilizerInterval);
     }
 
     return (
@@ -63,12 +77,12 @@ const AddPlant = () => {
             <label>Last Date of de-dust</label>
             <input type="date"></input>
             <label>De-dust interval</label>
-            <input type="number"></input>
+            <input type="number" value={dustInterval} onInput={updateDustInterval}></input>
 
             <label>Last Date of fertilization</label>
             <input type="date"></input>
             <label>Fertilization interval</label>
-            <input type="number"></input>
+            <input type="number" value={fertilizerInterval} onInput={updateFertilizerInterval}></input>
 
             <label>Send notifications</label>
             <input className={Style.fancyYN} type="checkbox"></input>

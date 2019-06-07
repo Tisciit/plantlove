@@ -8,17 +8,19 @@ const AddPlant = () => {
     const [dustInterval, setDustInterval] = useState(0);
     const [fertilizerInterval, setFertilizerInterval] = useState(0);
 
+    const date = new Date().toISOString().substr(0, 10);
+
     const getClassName = () => {
         return "addplant " + Style.grid;
     }
 
     const botanicals = {
-        A: {
+        Pilea: {
             c1: 1,
             c2: 2,
             c3: 3,
         },
-        B: {
+        Monstera: {
             c1: 4,
             c2: 5,
             c3: 6
@@ -48,10 +50,37 @@ const AddPlant = () => {
 
 
 
-    const doTheLog = () => {
+    const validateAndSave = (e) => {
         console.log(waterInterval);
         console.log(dustInterval);
         console.log(fertilizerInterval);
+
+        e.preventDefault();
+        /** Validation rules
+         * 1. intervals have to be numbers
+         * 2. dates have to be valid dates
+         * 3. image is attached (optional, preselection of default images)
+        */
+
+        returnData({
+            "id": 0,
+            "plantname": "Palm",
+            "botanicname": "Pflanza Botanica",
+            "planttype": "Neu/Ableger/...",
+            "place": "Office",
+            "picture": "plant.jpg",
+            "plantGroup": "Office Windows",
+            "statusOk": false,
+            "alarm": true,
+            "dates": {
+                "created": { "creationdate": new Date() },
+                "water": { "last": "10.05.2019", "cycle": waterInterval, "history": [] },
+                "dust": { "last": "10.05.2019", "cycle": dustInterval, "history": [] },
+                "fertilizer": { "last": "10.05.2019", "cycle": fertilizerInterval, "history": [] },
+                "repot": { "last": "10.05.2019", "cycle": "-1", "history": [] }
+            },
+            "notes": "Das ist eine Notiz!"
+        });
     }
 
     return (
@@ -59,8 +88,8 @@ const AddPlant = () => {
             <label htmlFor="botanicalName">Botanical Name</label>
             <input id="botanicalName" list="botanicalNames" onChange={updateVals}></input>
             <datalist id="botanicalNames">
-                <option>A</option>
-                <option>B</option>
+                <option>Monstera</option>
+                <option>Pilea</option>
             </datalist>
 
             <label>DisplayName</label>
@@ -70,17 +99,17 @@ const AddPlant = () => {
             <input type="file" name="image" accept="image/*"></input>
 
             <label>Last Date of water</label>
-            <input type="date"></input>
+            <input type="date" defaultValue={date}></input>
             <label>Water interval</label>
             <input type="number" value={waterInterval} onInput={updateWaterInterval}></input>
 
             <label>Last Date of de-dust</label>
-            <input type="date"></input>
+            <input type="date" defaultValue={date}></input>
             <label>De-dust interval</label>
             <input type="number" value={dustInterval} onInput={updateDustInterval}></input>
 
             <label>Last Date of fertilization</label>
-            <input type="date"></input>
+            <input type="date" defaultValue={date}></input>
             <label>Fertilization interval</label>
             <input type="number" value={fertilizerInterval} onInput={updateFertilizerInterval}></input>
 
@@ -90,7 +119,7 @@ const AddPlant = () => {
             <label className={Style.fullrow}>Notes</label>
             <textarea className={Style.fullrow}></textarea>
 
-            <button className={Style.fullrow} onClick={doTheLog}>Submit</button>
+            <button className={Style.fullrow} type="submit" onClick={validateAndSave}>Submit</button>
 
         </div>
     )

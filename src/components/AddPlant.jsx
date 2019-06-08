@@ -5,13 +5,21 @@ const AddPlant = () => {
 
     const date = new Date().toISOString().substr(0, 10);
 
-    const [waterInterval, setWaterInterval] = useState(0);
-    const [dustInterval, setDustInterval] = useState(0);
-    const [fertilizerInterval, setFertilizerInterval] = useState(0);
+    const [plantType, setPlantType] = useState("");
+    const [displayName, setDisplayName] = useState("");
 
     const [waterDate, setWaterDate] = useState(date);
+    const [waterInterval, setWaterInterval] = useState(0);
+
     const [dustDate, setDustDate] = useState(date);
+    const [dustInterval, setDustInterval] = useState(0);
+
     const [fertilizerDate, setFertilizerDate] = useState(date);
+    const [fertilizerInterval, setFertilizerInterval] = useState(0);
+
+    const [doNotify, setDoNotify] = useState(true);
+
+    const [notes, setNotes] = useState("");
 
     const getClassName = () => {
         return "addplant " + Style.grid;
@@ -30,9 +38,20 @@ const AddPlant = () => {
         },
     }
 
-    const updateVals = (e) => {
+    const plantTypeChanged = (e) => {
+        const newPlantType = e.target.value;
+        setPlantType(newPlantType);
 
-        const botanica = botanicals[e.target.value];
+        updateVals(newPlantType);
+    }
+
+    const displayNameChanged = (e) => {
+        setDisplayName(e.target.value);
+    }
+
+    const updateVals = (plantType) => {
+
+        const botanica = botanicals[plantType];
 
         if (botanica) {
             setWaterInterval(botanica.c1);
@@ -50,8 +69,25 @@ const AddPlant = () => {
     const updateFertilizerInterval = (e) => {
         setFertilizerInterval(e.target.value);
     }
+    const updateWaterDate = (e) => {
+        setWaterDate(e.target.value);
+    }
+    const updateDustDate = (e) => {
+        setDustDate(e.target.value);
+    }
+    const updateFertilizerDate = (e) => {
+        setFertilizerDate(e.target.value);
+    }
 
-    const returnData = (data) => { }
+    const updateNotes = (e) => {
+        setNotes(e.target.value);
+    }
+
+    const updateDoNotify = (e) => {
+        setDoNotify(e.target.checked);
+    }
+
+    const returnData = (data) => { console.log(data); }
 
     const validateAndSave = (e) => {
         console.log(waterInterval);
@@ -67,14 +103,14 @@ const AddPlant = () => {
 
         returnData({
             "id": 0,
-            "plantname": "Palm",
-            "botanicname": "Pflanza Botanica",
-            "planttype": "Neu/Ableger/...",
-            "place": "Office",
+            "plantname": displayName,
+            "botanicname": plantType,
+            "planttype": "default",
+            "place": "not defined",
             "picture": "plant.jpg",
-            "plantGroup": "Office Windows",
+            "plantGroup": "not defined",
             "statusOk": false,
-            "alarm": true,
+            "alarm": doNotify,
             "dates": {
                 "created": { "creationdate": new Date() },
                 "water": { "last": "10.05.2019", "cycle": waterInterval, "history": [] },
@@ -82,45 +118,45 @@ const AddPlant = () => {
                 "fertilizer": { "last": "10.05.2019", "cycle": fertilizerInterval, "history": [] },
                 "repot": { "last": "10.05.2019", "cycle": "-1", "history": [] }
             },
-            "notes": "Das ist eine Notiz!"
+            "notes": notes
         });
     }
 
     return (
         <div className={getClassName()}>
             <label htmlFor="botanicalName">Botanical Name</label>
-            <input id="botanicalName" list="botanicalNames" onChange={updateVals}></input>
+            <input id="botanicalName" list="botanicalNames" value={plantType} onChange={plantTypeChanged}></input>
             <datalist id="botanicalNames">
                 <option>Monstera</option>
                 <option>Pilea</option>
             </datalist>
 
             <label>DisplayName</label>
-            <input></input>
+            <input value={displayName} onChange={displayNameChanged}></input>
 
             <label>Photo</label>
             <input type="file" name="image" accept="image/*"></input>
 
             <label>Last Date of water</label>
-            <input type="date" value={waterDate}></input>
+            <input type="date" value={waterDate} onChange={updateWaterDate}></input>
             <label>Water interval</label>
             <input type="number" value={waterInterval} onInput={updateWaterInterval}></input>
 
             <label>Last Date of de-dust</label>
-            <input type="date" defaultValue={date}></input>
+            <input type="date" defaultValue={dustDate} onChange={updateDustDate}></input>
             <label>De-dust interval</label>
             <input type="number" value={dustInterval} onInput={updateDustInterval}></input>
 
             <label>Last Date of fertilization</label>
-            <input type="date" defaultValue={date}></input>
+            <input type="date" defaultValue={fertilizerDate} onChange={updateFertilizerDate}></input>
             <label>Fertilization interval</label>
             <input type="number" value={fertilizerInterval} onInput={updateFertilizerInterval}></input>
 
             <label>Send notifications</label>
-            <input className={Style.fancyYN} type="checkbox"></input>
+            <input className={Style.fancyYN} checked={doNotify} onChange={updateDoNotify} type="checkbox"></input>
 
             <label className={Style.fullrow}>Notes</label>
-            <textarea className={Style.fullrow}></textarea>
+            <textarea value={notes} onChange={updateNotes} className={Style.fullrow}></textarea>
 
             <button className={Style.fullrow} type="submit" onClick={validateAndSave}>Submit</button>
 

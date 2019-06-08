@@ -3,12 +3,15 @@ import Style from './AddPlant.module.css'
 
 const AddPlant = () => {
 
+    const date = new Date().toISOString().substr(0, 10);
 
     const [waterInterval, setWaterInterval] = useState(0);
     const [dustInterval, setDustInterval] = useState(0);
     const [fertilizerInterval, setFertilizerInterval] = useState(0);
 
-    const date = new Date().toISOString().substr(0, 10);
+    const [waterDate, setWaterDate] = useState(date);
+    const [dustDate, setDustDate] = useState(date);
+    const [fertilizerDate, setFertilizerDate] = useState(date);
 
     const getClassName = () => {
         return "addplant " + Style.grid;
@@ -48,7 +51,7 @@ const AddPlant = () => {
         setFertilizerInterval(e.target.value);
     }
 
-
+    const returnData = (data) => { }
 
     const validateAndSave = (e) => {
         console.log(waterInterval);
@@ -99,7 +102,7 @@ const AddPlant = () => {
             <input type="file" name="image" accept="image/*"></input>
 
             <label>Last Date of water</label>
-            <input type="date" defaultValue={date}></input>
+            <input type="date" value={waterDate}></input>
             <label>Water interval</label>
             <input type="number" value={waterInterval} onInput={updateWaterInterval}></input>
 

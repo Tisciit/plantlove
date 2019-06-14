@@ -102,7 +102,7 @@ const AddPlant = () => {
         */
 
         returnData({
-            "id": 0,
+            "id": -1,
             "plantname": displayName,
             "botanicname": plantType,
             "planttype": "default",
@@ -140,17 +140,17 @@ const AddPlant = () => {
             <label>Last Date of water</label>
             <input type="date" value={waterDate} onChange={updateWaterDate}></input>
             <label>Water interval</label>
-            <input type="number" value={waterInterval} onInput={updateWaterInterval}></input>
+            <input type="number" value={waterInterval} onChange={updateWaterInterval}></input>
 
             <label>Last Date of de-dust</label>
             <input type="date" defaultValue={dustDate} onChange={updateDustDate}></input>
             <label>De-dust interval</label>
-            <input type="number" value={dustInterval} onInput={updateDustInterval}></input>
+            <input type="number" value={dustInterval} onChange={updateDustInterval}></input>
 
             <label>Last Date of fertilization</label>
             <input type="date" defaultValue={fertilizerDate} onChange={updateFertilizerDate}></input>
             <label>Fertilization interval</label>
-            <input type="number" value={fertilizerInterval} onInput={updateFertilizerInterval}></input>
+            <input type="number" value={fertilizerInterval} onChange={updateFertilizerInterval}></input>
 
             <label>Send notifications</label>
             <input className={Style.fancyYN} checked={doNotify} onChange={updateDoNotify} type="checkbox"></input>

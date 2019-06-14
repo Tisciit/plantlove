@@ -1,0 +1,27 @@
+.grid {
+    margin: 1vw;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    row-gap: 1vh;
+}
+
+.fullrow {
+    grid-column: span 2;
+}
+
+textarea {
+    min-width: 100%;
+    max-width: 100%;
+    max-height: 10vh;
+}
+
+button {
+    width: 20vw;
+    height: 20vw;
+    justify-self: end;
+}
+
+.fancyYN {
+    height: 100%;
+    min-width: 20vw;
+}

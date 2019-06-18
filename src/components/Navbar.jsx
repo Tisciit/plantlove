@@ -15,8 +15,8 @@ const Navbar = () => {
         <div className={Style.nav}>
             <div className={Style.navLogo}><h3>LOGO</h3></div>
             <ul className={Style.navLinks}>
-                <li> <a href="#">About</a></li>
-                <li> <a href="#">Shop</a></li>
+                <li> <a href="/add">Add</a></li>
+                <li> <a href="/settings">Settings</a></li>
                 <li> <a href="#">Stuff</a></li>
                 <li> <a href="#">Things</a></li>
             </ul>

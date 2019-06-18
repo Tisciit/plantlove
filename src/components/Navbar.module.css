@@ -21,7 +21,7 @@
     align-items: center;
 
     width: 60%;
-    font-size: 1.5em;
+    font-size: 1.1em;
 }
 
 .navLinks a {
@@ -67,7 +67,7 @@
     .navBurger .navBurgerTop,
     .navBurger .navBurgerMiddle,
     .navBurger .navBurgerBottom {
-        background-color: black;
+        background-color: white;
         border-radius: 3px;
         display: block;
         height: 5px;
@@ -76,15 +76,17 @@
     }
 
     .navBurgerTopRotated {
-        transform: translateY(12px) rotate(135deg);
+        transform: translateY(20px) rotate(225deg);
+        width: 50%;
     }
 
     .navBurgerBottomRotated {
-        transform: translateY(-12px) rotate(-135deg);
+        transform: translateY(-20px) rotate(-225deg);
+        width: 50%;
     }
 
     .navBurgerMiddleHidden {
-        transform: scale(0);
+        
     }
 }
 

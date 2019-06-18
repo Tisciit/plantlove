@@ -1,0 +1,11 @@
+.div {
+    margin: 0 0 20px 0;
+    display:flex;
+    flex-direction: column;
+    flex-grow: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+button {
+    margin-top: 1em;
+}

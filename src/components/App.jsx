@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import './App.css';
-import Plants from './components/plants'
-import SVGAnimation from './components/svgAnimation'
-import Navbar from './components/Navbar';
-import AddPlant from './components/AddPlant';
-import Settings from './components/Settings';
+import '../App.css';
+import Plants from './plants'
+import SVGAnimation from './svgAnimation'
+import Navbar from './Navbar';
+import AddPlant from './AddPlant';
+import Settings from './Settings';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 

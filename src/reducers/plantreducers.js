@@ -1,5 +1,5 @@
 const defaultValue = () => {
-    return checkStore() ? localStorage.getItem("plants") || [] : [];
+    return checkStore() ? JSON.parse(localStorage.getItem("plants")) || [] : [];
 }
 
 const checkStore = () => {
@@ -7,7 +7,7 @@ const checkStore = () => {
 }
 
 const setLocalStore = (val) => {
-    localStorage.setItem("plants", val);
+    localStorage.setItem("plants", JSON.stringify(val));
 }
 
 const plantReducer = (state = defaultValue(), action) => {

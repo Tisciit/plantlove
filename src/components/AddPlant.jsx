@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import Style from './AddPlant.module.css'
+import {useDispatch} from "react-redux";
+import {add} from "../actions";
 
 const AddPlant = () => {
+    const dispatch = useDispatch();
 
     const date = new Date().toISOString().substr(0, 10);
 
@@ -87,7 +90,13 @@ const AddPlant = () => {
         setDoNotify(e.target.checked);
     }
 
-    const returnData = (data) => { console.log(data); }
+    const returnData = (data) => { dispatch(add(data)); }
+
+    const uuidv4 = () => {
+        return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+          (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+        )
+      }
 
     const validateAndSave = (e) => {
         console.log(waterInterval);
@@ -102,7 +111,7 @@ const AddPlant = () => {
         */
 
         returnData({
-            "id": -1,
+            "id": uuidv4(),
             "plantname": displayName,
             "botanicname": plantType,
             "planttype": "default",

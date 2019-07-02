@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../App.css';
-import Plants from './plants'
-import SVGAnimation from './svgAnimation'
+import Plants from './Plants'
+//import SVGAnimation from './svgAnimation'
 import Navbar from './Navbar';
 import AddPlant from './AddPlant';
 import Settings from './Settings';
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 
 const App = () => {

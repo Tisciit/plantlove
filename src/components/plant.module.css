@@ -1,3 +1,4 @@
+
 .div {
     margin: 0 0 .1em 0;
     border-radius: .2em;
@@ -16,6 +17,8 @@
 
 .imgCircle{
     grid-area: img;
+    height: 20vw;
+    width: 20vw;
     min-height: 1fr;
     max-height: 20vh;
     min-width: 1fr;

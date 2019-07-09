@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
 import style from './Plant.module.css'
-import image from '../plant.svg'
-import check from '../baseline-done-24px.svg';
+import image from '../graphics/plant.svg'
+import check from '../graphics/round-check_circle_outline-24px.svg';
 
 const Plant = ({ name, description }) => {
 
     const [selected, setSelected] = useState(false);
 
     const toggleSelection = (e) => {
-        console.log("click");
         e.preventDefault();
         setSelected(!selected);
     }

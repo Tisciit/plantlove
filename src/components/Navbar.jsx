@@ -13,7 +13,7 @@ const Navbar = () => {
 
     return (
         <div className={Style.nav}>
-            <div className={Style.navLogo}><h3>LOGO</h3></div>
+            <div className={Style.navLogo}><a href="/"><h3>LOGO</h3></a></div>
             <ul className={Style.navLinks}>
                 <li> <a href="/add">Add</a></li>
                 <li> <a href="/settings">Settings</a></li>

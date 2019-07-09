@@ -1,47 +1,17 @@
-import React, { useState } from 'react';
-import Plant from './plant'
+import React from 'react';
+import { useSelector } from "react-redux";
+import Plant from './Plant'
+import style from './Plants.module.css'
 
 const Plants = () => {
 
-    const [plants, setPlants] = useState(localStorage.getItem('plants') ? JSON.parse(localStorage.getItem('plants')) : [{
-        name: "my first plant",
-        description: "some very well describing text",
-    }])
-
-    const addPlant = (name = "no name", description = "no desc") => {
-        const _plants = [...plants];
-        _plants.push({
-            name: name,
-            description: description,
-        });
-        setPlants(_plants);
-    }
-
-    const showAddPlant = () => {
-        addPlant("","");
-    }
-
-    const saveToLocalStorage = () => {
-        localStorage.setItem('plants', JSON.stringify(plants));
-    }
-
-    const deletePlant = (key) => {
-        const _plants = [...plants];
-        
-        //löschen logik ya
-
-        setPlants(_plants);
-    } 
+    const plants = useSelector(state => state.plants);
 
     return (
-        <div>
+        <div className={style.plants}>
             {plants.map((p, index) => {
-                return <Plant key={index} name={p.name} description={p.description} />
+                return <Plant key={index} name={p.plantname} description={p.notes} />
             })}
-            <div className="button-row">
-                <button className="button-round-add" onClick={showAddPlant}>Add</button>
-                <button className="button-round-save" onClick = {saveToLocalStorage}>Save</button>
-            </div>
         </div>
     )
 }

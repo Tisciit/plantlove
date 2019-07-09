@@ -1,8 +1,8 @@
+
 .div {
-    margin: 0 0 20px 0;
-    border-radius: 20px;
+    margin: 0 0 .1em 0;
+    border-radius: .2em;
     border: 1px solid black;
-    box-shadow: 2px 2px gray;
     padding: 10px;
     display: grid;
     
@@ -17,6 +17,8 @@
 
 .imgCircle{
     grid-area: img;
+    height: 20vw;
+    width: 20vw;
     min-height: 1fr;
     max-height: 20vh;
     min-width: 1fr;

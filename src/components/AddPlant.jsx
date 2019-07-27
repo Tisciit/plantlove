@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Style from './AddPlant.module.css'
 import {useDispatch} from "react-redux";
-import {add} from "../actions";
+import {add} from "../store/actions";
 
 const AddPlant = () => {
     const dispatch = useDispatch();

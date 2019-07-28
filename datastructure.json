@@ -1,0 +1,60 @@
+{
+    "user": {
+        "username": "MaxMustermann",
+        "useremail": "max@mustermann.de",
+        "location": "germany"
+    },
+    "settings": {
+        "notificationTime": "19:00",
+        "theme": "dark",
+        "language": "german",
+        "timeformat": "metric/imperial"
+    },
+    "plants": [{
+        "id": 0,
+        "plantname": "Palm",
+        "botanicname": "Pflanza Botanica",
+        "planttype": "Neu/Ableger/...",
+        "place": "Office",
+        "picture": "plant.jpg",
+        "plantGroup": "Office Windows",
+        "statusOk": false,
+        "alarm": true,
+        "dates": {
+            "created": {
+                "creationdate": "01.01.2019"
+            },
+            "water": {
+                "last": "10.05.2019",
+                "cycle": "2",
+                "history": ["02.05.2019", "04.05.2019", "06.05.2019", "08.05.2019"]
+            },
+            "dust": {
+                "last": "10.05.2019",
+                "cycle": "7",
+                "history": []
+            },
+            "fertilizer": {
+                "last": "10.05.2019",
+                "cycle": "14",
+                "history": []
+            },
+            "repot": {
+                "last": "10.05.2019",
+                "cycle": "-1",
+                "history": []
+            }
+        },
+        "notes": "Das ist eine Notiz!"
+    }],
+
+    "plantTypes": [{
+        "id": 0,
+        "name": "Some_botanical_name",
+        "defaultIntervals" : {
+            "water": 5,
+            "dust": 3,
+            "b":2
+        }
+    }]
+}

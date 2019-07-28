@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Style from './AddPlant.module.css'
 import {useDispatch} from "react-redux";
-import {add} from "../store/actions";
+import {PLANT_DB} from '../idb';
+import {add, idbAdd} from "../store/actions";
 
 const AddPlant = () => {
     const dispatch = useDispatch();
@@ -90,7 +91,10 @@ const AddPlant = () => {
         setDoNotify(e.target.checked);
     }
 
-    const returnData = (data) => { dispatch(add(data)); }
+    const returnData = (data) => { 
+        dispatch(add(data));
+        dispatch(idbAdd(data, PLANT_DB));
+    }
 
     const uuidv4 = () => {
         return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>

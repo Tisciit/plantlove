@@ -7,6 +7,7 @@ import AddPlant from './AddPlant';
 import Settings from './Settings';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import {idb} from "../idb";
 
 
 const App = () => {

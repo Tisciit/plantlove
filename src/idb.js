@@ -51,6 +51,7 @@ export const idbAddItem = (db, item) => {
         }
     });
 }
+
 export const idbRemoveItem = (db, key) => {
     return new Promise((resolve, reject) => {
         const objectStore = idb.transaction(db, "readwrite").objectStore(db);

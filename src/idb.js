@@ -66,3 +66,27 @@ export const idbRemoveItem = (db, key) => {
         }
     });
 }
+
+export const idbGetAllItems = (db) => {
+
+    return new Promise((resolve, reject) => {
+        const objectStore = idb.transaction(db, "read").objectStore(db);
+        
+        const data = [];
+        const cursor = objectStore.openCursor();
+        
+        cursor.onsuccess = e => {
+          const cursor = e.target.result;
+          if (cursor) {
+            data.push(cursor.value);
+            cursor.continue();
+          } else {
+            resolve(data);
+          }
+        };
+
+        cursor.onerror = e => {
+            reject(e);
+        }
+    });
+}

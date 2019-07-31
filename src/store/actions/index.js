@@ -1,4 +1,4 @@
-import { idbAddItem } from "../../idb";
+import { idbAddItem, idbGetAllItems, DEFAULT_PLANTS_DB } from "../../idb";
 
 export const ADD_SINGLE_PLANT = "ADD_SINGLE_PLANT";
 export const REMOVE_SINGLE_PLANT = "REMOVE_SINGLE_PLANT";
@@ -19,6 +19,13 @@ export const remove = (id) => {
     }
 }
 
+export const updateDefaultPlants = (plants) => {
+    return {
+        type: "UPDATEDEFAULTPLANTS",
+        data: plants
+    }
+}
+
 export const idbAdd = (item, db) => {
     return dispatch => {
         //dispatch isBusy flag or something
@@ -34,3 +41,17 @@ export const idbAdd = (item, db) => {
         });
     }
 }
+
+export const idbGetDefaultPlants = () => {
+    return dispatch => {
+        //TODO: Dispatch App Loading State
+
+        idbGetAllItems(DEFAULT_PLANTS_DB).then(data => {
+            dispatch(updateDefaultPlants(data));
+            //TODO: Dispatch App end loading state
+        }).catch(reject => {
+            //TODO: Dispatch App end loading state
+            //TODO: Dispatch error message
+        });
+    }
+} 

@@ -3,6 +3,7 @@ export const DB_NAME = "plantlove";
 export const DB_VERSION = 1;
 export const PLANT_DB = "plants";
 export const SETTINGS_DB = "settings";
+export const DEFAULT_PLANTS_DB = "defaultPlants"
 
 export const idbConnect = () => {
   return new Promise((resolve, reject) => {
@@ -25,6 +26,8 @@ export const idbConnect = () => {
       const settingStore = db.createObjectStore(SETTINGS_DB, {
         keyPath: "title"
       });
+
+      const defaultPlants = db.createObjectStore(DEFAULT_PLANTS_DB, {autoIncrement: true});
     };
 
     request.onerror = ev => {

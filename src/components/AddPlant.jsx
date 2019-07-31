@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import Style from './AddPlant.module.css'
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {PLANT_DB} from '../idb';
 import {add, idbAdd} from "../store/actions";
 
 const AddPlant = () => {
     const dispatch = useDispatch();
+    const defaultData = useSelector(state => state.defaultData);
 
     const date = new Date().toISOString().substr(0, 10);
 
@@ -27,19 +28,6 @@ const AddPlant = () => {
 
     const getClassName = () => {
         return "addplant " + Style.grid;
-    }
-
-    const botanicals = {
-        Pilea: {
-            c1: 1,
-            c2: 2,
-            c3: 3,
-        },
-        Monstera: {
-            c1: 4,
-            c2: 5,
-            c3: 6
-        },
     }
 
     const plantTypeChanged = (e) => {
@@ -140,8 +128,10 @@ const AddPlant = () => {
             <label htmlFor="botanicalName">Botanical Name</label>
             <input id="botanicalName" list="botanicalNames" value={plantType} onChange={plantTypeChanged}></input>
             <datalist id="botanicalNames">
-                <option>Monstera</option>
-                <option>Pilea</option>
+                {
+                    defaultData.map((data) => {
+                    return <option>{data.name}</option> 
+                })}
             </datalist>
 
             <label>DisplayName</label>

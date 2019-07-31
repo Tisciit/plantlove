@@ -43,7 +43,7 @@ const AddPlant = () => {
 
     const updateVals = (plantType) => {
 
-        const botanica = botanicals[plantType];
+        const botanica = defaultData[plantType];
 
         if (botanica) {
             setWaterInterval(botanica.c1);
@@ -84,12 +84,6 @@ const AddPlant = () => {
         dispatch(idbAdd(data, PLANT_DB));
     }
 
-    const uuidv4 = () => {
-        return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
-          (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-        )
-      }
-
     const validateAndSave = (e) => {
         console.log(waterInterval);
         console.log(dustInterval);
@@ -103,7 +97,6 @@ const AddPlant = () => {
         */
 
         returnData({
-            "id": uuidv4(),
             "plantname": displayName,
             "botanicname": plantType,
             "planttype": "default",
@@ -129,8 +122,8 @@ const AddPlant = () => {
             <input id="botanicalName" list="botanicalNames" value={plantType} onChange={plantTypeChanged}></input>
             <datalist id="botanicalNames">
                 {
-                    defaultData.map((data) => {
-                    return <option>{data.name}</option> 
+                    Object.getOwnPropertyNames(defaultData).map((elt, index) => {
+                        return <option key={index}>{elt}</option> 
                 })}
             </datalist>
 

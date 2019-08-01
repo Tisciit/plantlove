@@ -1,3 +1,5 @@
+import theDefaultPlants from "./defaultPlants"
+
 //Setup indexedDB constants
 export const DB_NAME = "plantlove";
 export const DB_VERSION = 1;
@@ -28,7 +30,11 @@ const idbConnect = () => {
       });
 
       const defaultPlants = db.createObjectStore(DEFAULT_PLANTS_DB, {
-        autoIncrement: true
+        keyPath: "botanical_name"
+      });
+
+      theDefaultPlants.forEach(element => {
+        defaultPlants.add(element);
       });
     };
 
@@ -147,4 +153,10 @@ export const idbPutItem = (db, item, key = null) => {
         }
       });
     });
+}
+
+export const objectStoreAutoInrements = (db) => {
+  idb.then(idb => {
+    return idb.transaction(db, "readonly").objectStore.autoIncrement;
+  })
 }

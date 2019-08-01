@@ -1,4 +1,11 @@
-import { idbAddItem, idbGetAllItems, DEFAULT_PLANTS_DB,  } from "../../idb";
+import {
+    idbAddItem,
+    idbGetAllItems,
+    DEFAULT_PLANTS_DB,
+    idbRemoveItem,
+    idbPutItem,
+    objectStoreAutoInrements,
+} from "../../idb";
 
 export const ADD_SINGLE_PLANT = "ADD_SINGLE_PLANT";
 export const REMOVE_SINGLE_PLANT = "REMOVE_SINGLE_PLANT";
@@ -59,11 +66,27 @@ export const idbGetDefaultPlants = () => {
 //Refresh all items in indexedDB according to the store.
 export const idbRefresh = (db, items, keyAttr) => {
     return dispatch => {
-        //TODO: Spinner to indicate db action
 
-        idbGetAllItems(db).then(data => {
-            
-        });
-        
+        if (!objectStoreAutoInrements(db)) {
+            //keyPath is defined in db
+            items.forEach(item => {
+                idbPutItem(db, item);
+            });
+        } else {
+
+            //no keyPath (autoIncrement = true)
+            //Store a copy of items in tmp_items
+            const tmp_items = [...items];
+            idbGetAllItems(db).then(data => {
+                data.foreach(dt => {
+                    const index = tmp_items.findIndex(elt => elt[keyAttr] === db[keyAttr]);
+                    if (index !== -1) {
+                        const item = tmp_items.splice(index, 1);
+                        idbPutItem(db, item, keyAttr);
+                    }
+                });
+            });
+        }
+
     }
 }

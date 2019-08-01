@@ -130,3 +130,21 @@ export const idbGetMatchingItems = (db, attr, key) => {
     });
   });
 };
+
+//Updates an existing item or adds a new one
+export const idbPutItem = (db, item, key = null) => {
+  	return idb.then(idb => {
+      return new Promise((resolve, reject) => {
+        const objectStore = idb.transaction(db, "readwrite").objectStore(db);
+        const request = key ? objectStore.put(item, key) : objectStore.put(item);
+        
+        request.onsuccess = (ev) => {
+          resolve(`Item has been updated or created ${ev.target.result}`);
+        }
+
+        request.onerror = (ev) => {
+          reject(`Error: ${ev}`)
+        }
+      });
+    });
+}

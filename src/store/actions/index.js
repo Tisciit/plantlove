@@ -1,4 +1,4 @@
-import { idbAddItem, idbGetAllItems, DEFAULT_PLANTS_DB } from "../../idb";
+import { idbAddItem, idbGetAllItems, DEFAULT_PLANTS_DB,  } from "../../idb";
 
 export const ADD_SINGLE_PLANT = "ADD_SINGLE_PLANT";
 export const REMOVE_SINGLE_PLANT = "REMOVE_SINGLE_PLANT";
@@ -54,4 +54,16 @@ export const idbGetDefaultPlants = () => {
             //TODO: Dispatch error message
         });
     }
-} 
+}
+
+//Refresh all items in indexedDB according to the store.
+export const idbRefresh = (db, items, keyAttr) => {
+    return dispatch => {
+        //TODO: Spinner to indicate db action
+
+        idbGetAllItems(db).then(data => {
+            
+        });
+        
+    }
+}

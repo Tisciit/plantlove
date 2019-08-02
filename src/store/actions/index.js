@@ -2,9 +2,8 @@ import {
     idbAddItem,
     idbGetAllItems,
     DEFAULT_PLANTS_DB,
-    idbRemoveItem,
     idbPutItem,
-    objectStoreAutoInrements,
+    idbObjectStoreAutoInrements,
 } from "../../idb";
 
 export const ADD_SINGLE_PLANT = "ADD_SINGLE_PLANT";
@@ -67,7 +66,7 @@ export const idbGetDefaultPlants = () => {
 export const idbRefresh = (db, items, keyAttr) => {
     return dispatch => {
 
-        if (!objectStoreAutoInrements(db)) {
+        if (!idbObjectStoreAutoInrements(db)) {
             //keyPath is defined in db
             items.forEach(item => {
                 idbPutItem(db, item);

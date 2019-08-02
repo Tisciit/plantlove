@@ -50,14 +50,14 @@ const idbConnect = () => {
 
 export const idb = idbConnect();
 
-export const idbAddItem = (db, item) => {
+export const idbAddItem = (objstore, item) => {
   return idb.then(idb => {
     return new Promise((resolve, reject) => {
-      const objectStore = idb.transaction(db, "readwrite").objectStore(db);
+      const objectStore = idb.transaction(objstore, "readwrite").objectStore(objstore);
       const request = objectStore.add(item);
 
       request.onsuccess = ev => {
-        resolve(`Item ${ev.target.result} added to ${db}`);
+        resolve(`Item ${ev.target.result} added to ${objstore}`);
       };
 
       request.onerror = ev => {
@@ -67,14 +67,14 @@ export const idbAddItem = (db, item) => {
   });
 };
 
-export const idbRemoveItem = (db, key) => {
+export const idbRemoveItem = (objstore, key) => {
   return idb.then(idb => {
     return new Promise((resolve, reject) => {
-      const objectStore = idb.transaction(db, "readwrite").objectStore(db);
+      const objectStore = idb.transaction(objstore, "readwrite").objectStore(objstore);
       const request = objectStore.remove(key);
 
       request.onsuccess = ev => {
-        resolve(`Item ${ev.target.result} removed from ${db}`);
+        resolve(`Item ${ev.target.result} removed from ${objstore}`);
       };
 
       request.onerror = ev => {
@@ -84,11 +84,11 @@ export const idbRemoveItem = (db, key) => {
   });
 };
 
-export const idbGetAllItems = db => {
+export const idbGetAllItems = objstore => {
   return idb.then(idb => {
     console.log(idb);
     return new Promise((resolve, reject) => {
-      const objectStore = idb.transaction(db, "readonly").objectStore(db);
+      const objectStore = idb.transaction(objstore, "readonly").objectStore(objstore);
 
       const data = [];
       const cursor = objectStore.openCursor();
@@ -110,10 +110,10 @@ export const idbGetAllItems = db => {
   });
 };
 
-export const idbGetMatchingItems = (db, attr, key) => {
+export const idbGetMatchingItems = (objstore, attr, key) => {
   return idb.then(idb => {
     return new Promise((resolve, reject) => {
-      const objectStore = idb.transaction(db, "read").objectStore(db);
+      const objectStore = idb.transaction(objstore, "read").objectStore(objstore);
 
       const data = [];
       const cursor = objectStore.openCursor();
@@ -138,10 +138,10 @@ export const idbGetMatchingItems = (db, attr, key) => {
 };
 
 //Updates an existing item or adds a new one
-export const idbPutItem = (db, item, key = null) => {
+export const idbPutItem = (objstore, item, key = null) => {
   	return idb.then(idb => {
       return new Promise((resolve, reject) => {
-        const objectStore = idb.transaction(db, "readwrite").objectStore(db);
+        const objectStore = idb.transaction(objstore, "readwrite").objectStore(objstore);
         const request = key ? objectStore.put(item, key) : objectStore.put(item);
         
         request.onsuccess = (ev) => {
@@ -155,8 +155,8 @@ export const idbPutItem = (db, item, key = null) => {
     });
 }
 
-export const objectStoreAutoInrements = (db) => {
+export const idbObjectStoreAutoInrements = (objstore) => {
   idb.then(idb => {
-    return idb.transaction(db, "readonly").objectStore.autoIncrement;
+    return idb.transaction(objstore, "readonly").objectStore.autoIncrement;
   })
 }
